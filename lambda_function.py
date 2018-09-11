@@ -33,17 +33,18 @@ def lambda_handler(data, context):
             elif is_number(first_text) and len(array_text) == 2:
                 text = guess_password(int(first_text))
             elif 'alvin' in first_text:
-                alvins = [':alvinbigmuscle:',
-                          ':alvincatchmeifucan:',
-                          ':alvincentcatchweifucan:',
-                          ':alvinmuscle:',
-                          ':alvinpopping:',
-                          ':alvinspecial:',
-                          ':alvinstaring:',
-                          ':alvinstrong:',
-                          ':alvinwithmeimei:',
-                          ':alvinwtf:']
-                text = '禿驢 ' + random.choice(alvins)
+                emoji = ('bigmuscle',
+                         'catchmeifucan',
+                         'centcatchweifucan',
+                         'muscle',
+                         'popping',
+                         'special',
+                         'staring',
+                         'strong',
+                         'withmeim')
+                text = f'禿驢 :alvin{random.choice(emoji)}:'
+            elif first_text in ('DROP', 'DELETE', 'HELP', 'help'):
+                text = '你媽個b'
             elif first_text == '午餐吃什麼':
                 lunch = [
                     '食飯',
@@ -56,12 +57,11 @@ def lambda_handler(data, context):
                     '屎',
                     'mos',
                     '小龍',
-                    '今天絕食'
+                    '絕食',
+                    '王胖子',
+                    '羊肉'
                 ]
                 text = '今天吃' + random.choice(lunch)
-            else:
-                text = '你媽個b'
-
             post_message(text, slack_event["channel"])
 
     except Exception as e:
