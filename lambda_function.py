@@ -44,7 +44,22 @@ def lambda_handler(data, context):
                           ':alvinwithmeimei:',
                           ':alvinwtf:']
                 text = '禿驢 ' + random.choice(alvins)
-            elif 'DROP' or 'DELETE' or 'HELP' or 'help' in first_text:
+            elif first_text == '午餐吃什麼':
+                lunch = [
+                    '食飯',
+                    '山西',
+                    '麥當勞',
+                    '軟骨飯',
+                    '真燈',
+                    '7-11',
+                    '全家',
+                    '屎',
+                    'mos',
+                    '小龍',
+                    '今天絕食'
+                ]
+                text = '今天吃' + random.choice(lunch)
+            else:
                 text = '你媽個b'
 
             post_message(text, slack_event["channel"])
